@@ -14,6 +14,11 @@ import {
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  isLoading = false;
+  error = null;
+
+  constructor() {}
+
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -24,5 +29,6 @@ export class LoginComponent {
 
   onSubmit() {
     console.log(this.loginForm);
+    this.loginForm.reset();
   }
 }

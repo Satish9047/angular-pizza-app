@@ -1,1 +1,78 @@
-<p>register works!</p>
+<div>
+  <div>
+    <h3>Register</h3>
+  </div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="username">Name</label>
+      <input type="text" id="username" formControlName="username" />
+      @if (
+        registerForm.get("username")?.errors?.["required"] &&
+        registerForm.get("username")?.touched
+      ) {
+        <p>UserName is Mandatory</p>
+      } @else if (
+        registerForm.get("username")?.errors?.["minlength"] &&
+        registerForm.get("username")?.touched
+      ) {
+        <p>Username should be at least 3 characters</p>
+      }
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" />
+      @if (
+        registerForm.get("email")?.errors?.["required"] &&
+        registerForm.get("email")?.touched
+      ) {
+        <p>email is Mandatory</p>
+      } @else if (
+        registerForm.get("email")?.errors?.["email"] &&
+        registerForm.get("email")?.touched
+      ) {
+        <p>Invalid Email</p>
+      }
+    </div>
+    <div>
+      <label for="phone">Phone</label>
+      <input type="text" id="phone" formControlName="phone" />
+      @if (
+        registerForm.get("phone")?.errors?.["required"] &&
+        registerForm.get("phone")?.touched
+      ) {
+        <p>phone is Mandatory</p>
+      } @else if (
+        registerForm.get("phone")?.errors?.["minlength"] &&
+        registerForm.get("phone")?.touched
+      ) {
+        <p>phone should be 10 characters number</p>
+      }
+    </div>
+    <div>
+      <label for="address">Address</label>
+      <input type="text" id="address" formControlName="address" />
+      @if (
+        registerForm.get("address")?.errors?.["required"] &&
+        registerForm.get("address")?.touched
+      ) {
+        <p>address is Mandatory</p>
+      }
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="text" id="password" formControlName="password" />
+      @if (
+        registerForm.get("password")?.errors?.["required"] &&
+        registerForm.get("password")?.touched
+      ) {
+        <p>password is Mandatory</p>
+      } @else if (
+        registerForm.get("password")?.errors?.["minlength"] &&
+        registerForm.get("password")?.touched
+      ) {
+        <p>password should be at least 8 characters</p>
+      }
+    </div>
+    <div><button>Register</button></div>
+  </form>
+</div>
