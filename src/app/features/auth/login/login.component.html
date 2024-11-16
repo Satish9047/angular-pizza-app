@@ -1,47 +1,70 @@
-<div>
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<div class="flex flex-col items-center justify-center min-h-screen">
+  <div py-4 mb-4>
+    <h3>Login</h3>
+  </div>
+  <form
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()"
+    class="flex flex-col gap-4 min-w-96"
+  >
     @if (error) {
-      <div>
+      <div class="errorBox">
         <p>{{ error }}</p>
       </div>
     }
-    <div>
-      <h3>Login</h3>
-    </div>
+
     <div>
       <label for="email">Email</label>
-      <input type="text" id="email" formControlName="email" />
+      <input
+        type="text"
+        id="email"
+        formControlName="email"
+        class="block w-full"
+      />
       @if (
         loginForm.get("email")?.errors?.["required"] &&
         loginForm.get("email")?.touched
       ) {
-        <p>Email is Mandatory</p>
+        <p class="text-red-600">Email is Mandatory</p>
       } @else if (
         loginForm.get("email")?.errors?.["email"] &&
         loginForm.get("email")?.touched
       ) {
-        <p>Invalid Email</p>
+        <p class="text-red-600">Invalid Email</p>
       }
     </div>
     <div>
       <label for="password">Password</label>
-      <input type="text" id="password" formControlName="password" />
+      <input
+        type="text"
+        id="password"
+        formControlName="password"
+        class="block w-full"
+      />
       @if (
         loginForm.get("password")?.errors?.["required"] &&
         loginForm.get("password")?.touched
       ) {
-        <p>Password is Mandatory</p>
+        <p class="text-red-600">Password is Mandatory</p>
       } @else if (
         loginForm.get("password")?.errors?.["minlength"] &&
         loginForm.get("password")?.touched
       ) {
-        <p>Password must be at least 8 character</p>
+        <p class="text-red-600">Password must be at least 8 character</p>
       }
     </div>
-    <div>
+    <div class="flex justify-between">
       <button type="submit" [disabled]="!loginForm.valid || isLoading">
         {{ isLoading ? "loading..." : "Login" }}
       </button>
+      <span
+        ><a
+          [routerLink]="['/register']"
+          routerLinkActive="register"
+          class="font-semibold text-blue-700 underline"
+          >Register Here </a
+        >&rarr;</span
+      >
     </div>
   </form>
 </div>
