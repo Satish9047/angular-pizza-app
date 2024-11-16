@@ -1,21 +1,26 @@
 <div>
+  @if (error) {
+    <div>
+      <p>{{ error }}</p>
+    </div>
+  }
   <div>
     <h3>Register</h3>
   </div>
   <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <div>
-      <label for="username">Name</label>
-      <input type="text" id="username" formControlName="username" />
+      <label for="name">Name</label>
+      <input type="text" id="name" formControlName="name" />
       @if (
-        registerForm.get("username")?.errors?.["required"] &&
-        registerForm.get("username")?.touched
+        registerForm.get("name")?.errors?.["required"] &&
+        registerForm.get("name")?.touched
       ) {
         <p>UserName is Mandatory</p>
       } @else if (
-        registerForm.get("username")?.errors?.["minlength"] &&
-        registerForm.get("username")?.touched
+        registerForm.get("name")?.errors?.["minlength"] &&
+        registerForm.get("name")?.touched
       ) {
-        <p>Username should be at least 3 characters</p>
+        <p>Name should be at least 3 characters</p>
       }
     </div>
     <div>
@@ -33,6 +38,7 @@
         <p>Invalid Email</p>
       }
     </div>
+
     <div>
       <label for="phone">Phone</label>
       <input type="text" id="phone" formControlName="phone" />
