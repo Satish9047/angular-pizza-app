@@ -39,7 +39,9 @@
       }
     </div>
     <div>
-      <button type="submit" [disabled]="!loginForm.valid">Login</button>
+      <button type="submit" [disabled]="!loginForm.valid || isLoading">
+        {{ isLoading ? "loading..." : "Login" }}
+      </button>
     </div>
   </form>
 </div>

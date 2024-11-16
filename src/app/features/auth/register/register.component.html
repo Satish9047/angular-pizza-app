@@ -79,6 +79,10 @@
         <p>password should be at least 8 characters</p>
       }
     </div>
-    <div><button>Register</button></div>
+    <div>
+      <button [disabled]="!registerForm.valid || isLoading">
+        {{ isLoading ? "Loading.." : "Register" }}
+      </button>
+    </div>
   </form>
 </div>

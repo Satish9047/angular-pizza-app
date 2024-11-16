@@ -56,7 +56,7 @@ export class RegisterComponent {
     this.authService.register(registerData).subscribe({
       next: (response) => {
         if (response.success) {
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['login']);
         }
         this.registerForm.reset();
         this.isLoading = false;
