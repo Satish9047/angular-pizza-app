@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-import { AuthResponse, RegisterData } from '../interfaces/auth';
+
+import { AuthResponse, LoginData, RegisterData } from '../interfaces/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,20 @@ export class AuthService {
       )
       .pipe(
         catchError((error: any) => {
+          return throwError(() => new Error(error.error.message));
+        }),
+      );
+  }
+
+  login(loginData: LoginData) {
+    return this.http
+      .post<AuthResponse>(
+        'http://localhost:8080/api/v1/auth/sign-in',
+        loginData,
+      )
+      .pipe(
+        catchError((error: any) => {
+          console.log('from service', error);
           return throwError(() => new Error(error.error.message));
         }),
       );

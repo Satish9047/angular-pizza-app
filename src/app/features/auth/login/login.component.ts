@@ -1,3 +1,5 @@
+import { AuthService } from './../../../core/services/auth.service';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import {
   ReactiveFormsModule,
@@ -5,6 +7,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +20,10 @@ export class LoginComponent {
   isLoading = false;
   error = null;
 
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {}
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -28,7 +34,21 @@ export class LoginComponent {
   });
 
   onSubmit() {
-    console.log(this.loginForm);
+    this.isLoading = true;
+    console.log;
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (response) => {
+        if (response.success) {
+          this.router.navigate(['/dashboard']);
+        }
+        this.isLoading = false;
+      },
+      error: (error) => {
+        this.error = error.message;
+        this.isLoading = false;
+        this.loginForm.reset();
+      },
+    });
     this.loginForm.reset();
   }
 }

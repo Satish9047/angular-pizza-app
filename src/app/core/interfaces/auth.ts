@@ -13,6 +13,11 @@ export interface RegisterData {
   password: string;
 }
 
+export interface LoginData {
+  email: string;
+  password: string;
+}
+
 export interface ResponseUser {
   _id: string;
   name: string;
@@ -23,4 +28,5 @@ export interface ResponseUser {
   role: string;
   createdAt: string;
   updatedAt: string;
+  __v: number;
 }

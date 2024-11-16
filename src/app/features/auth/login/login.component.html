@@ -31,7 +31,6 @@
         loginForm.get("password")?.touched
       ) {
         <p>Password is Mandatory</p>
-
       } @else if (
         loginForm.get("password")?.errors?.["minlength"] &&
         loginForm.get("password")?.touched
