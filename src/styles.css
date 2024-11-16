@@ -6,3 +6,19 @@
 input.ng-invalid.ng-touched {
   border: 1px solid red;
 }
+
+input {
+  @apply py-2 px-4 rounded-md border border-gray-300;
+}
+
+button {
+  @apply py-4 px-6 rounded-md bg-orange-600 text-white hover:bg-orange-500 active:bg-orange-700 cursor-pointer  disabled:cursor-not-allowed;
+}
+
+h3 {
+  @apply text-2xl font-bold text-orange-600 tracking-wider;
+}
+
+.errorBox {
+  @apply p-4 text-center text-white bg-red-400 rounded-md;
+}
