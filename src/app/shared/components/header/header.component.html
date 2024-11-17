@@ -1,0 +1,30 @@
+<section>
+  <aside>
+    <header class="flex items-center justify-center h-20">
+      <nav class="container flex justify-between">
+        <div>
+          <h3>Super Pizza</h3>
+        </div>
+        <div>
+          <p>Satish Prajapati</p>
+        </div>
+      </nav>
+    </header>
+  </aside>
+
+  <aside>
+    <div class="flex flex-row">
+      <aside class="absolute px-4 w-44">
+        <nav class="flex flex-col gap-6">
+          <a [routerLink]="['/user/dashboard']">Dashboard</a>
+          <a href="">Your Order</a>
+          <a href="">Custom Order</a>
+          <a [routerLink]="['/user/profile']">Profile</a>
+          <a href="">Sign Out</a>
+        </nav>
+      </aside>
+      <aside></aside>
+    </div>
+  </aside>
+</section>
+<router-outlet></router-outlet>
