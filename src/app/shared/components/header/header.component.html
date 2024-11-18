@@ -16,10 +16,18 @@
     <div class="flex flex-row">
       <aside class="absolute px-4 w-44">
         <nav class="flex flex-col gap-6">
-          <a [routerLink]="['/user/dashboard']">Dashboard</a>
-          <a href="">Your Order</a>
-          <a href="">Custom Order</a>
-          <a [routerLink]="['/user/profile']">Profile</a>
+          <a [routerLink]="['/user/dashboard']" routerLinkActive="active"
+            >Dashboard</a
+          >
+          <a [routerLink]="['/user/your-orders']" routerLinkActive="active"
+            >Your Order</a
+          >
+          <a [routerLink]="['/user/custom-order']" routerLinkActive="active"
+            >Custom Order</a
+          >
+          <a [routerLink]="['/user/profile']" routerLinkActive="active"
+            >Profile</a
+          >
           <a href="">Sign Out</a>
         </nav>
       </aside>
