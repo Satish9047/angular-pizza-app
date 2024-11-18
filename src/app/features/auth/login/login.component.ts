@@ -44,7 +44,7 @@ export class LoginComponent {
         this.isLoading = false;
       },
       error: (error) => {
-        this.error = error.message;
+        this.error = error.message || 'An error occurred during login.';
         this.isLoading = false;
         this.loginForm.reset();
       },
