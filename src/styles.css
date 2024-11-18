@@ -22,3 +22,11 @@ h3 {
 .errorBox {
   @apply p-4 text-center text-white bg-red-400 rounded-md;
 }
+
+.active {
+  @apply underline text-orange-600;
+}
+
+.inActive {
+  @apply text-white no-underline;
+}
