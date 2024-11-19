@@ -6,6 +6,8 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { ProfileComponent } from './features/users/profile/profile.component';
 import { CustomOrderComponent } from './features/users/custom-order/custom-order.component';
 import { YourOrdersComponent } from './features/users/your-orders/your-orders.component';
+import { InventoryComponent } from './features/admin/inventory/inventory.component';
+import { RequestedOrdersComponent } from './features/admin/requested-orders/requested-orders.component';
 
 export const routes: Routes = [
   {
@@ -38,6 +40,22 @@ export const routes: Routes = [
         path: 'custom-order',
         component: CustomOrderComponent,
         title: 'Order',
+      },
+    ],
+  },
+  {
+    path: 'admin',
+    component: HeaderComponent,
+    children: [
+      {
+        path: 'inventory',
+        component: InventoryComponent,
+        title: 'Inventory',
+      },
+      {
+        path: 'requested-orders',
+        component: RequestedOrdersComponent,
+        title: 'Requested Orders',
       },
     ],
   },
