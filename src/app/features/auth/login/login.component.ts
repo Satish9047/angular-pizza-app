@@ -44,9 +44,12 @@ export class LoginComponent {
         this.isLoading = false;
       },
       error: (error) => {
-        this.error = error.message || 'An error occurred during login.';
+        this.error = error.message;
         this.isLoading = false;
         this.loginForm.reset();
+        setTimeout(() => {
+          this.error = null;
+        }, 3000);
       },
     });
     this.loginForm.reset();

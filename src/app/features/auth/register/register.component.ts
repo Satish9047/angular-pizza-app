@@ -62,8 +62,11 @@ export class RegisterComponent {
         this.isLoading = false;
       },
       error: (error: any) => {
-        this.error = error.message || 'An error occurred during registration.';
+        this.error = error.message;
         this.isLoading = false;
+        setTimeout(() => {
+          this.error = null;
+        }, 3000);
       },
     });
   }
