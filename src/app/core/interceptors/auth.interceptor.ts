@@ -5,5 +5,8 @@ export function authInterceptor(
   req: HttpRequest<unknown>,
   next: HttpHandlerFn,
 ): Observable<HttpEvent<unknown>> {
-  return next(req);
+  const modifiedReq = req.clone({
+    withCredentials: true,
+  });
+  return next(modifiedReq);
 }
