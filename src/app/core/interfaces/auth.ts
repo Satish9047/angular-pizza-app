@@ -1,5 +1,7 @@
-export interface AuthResponse {
-  data: ResponseUser | null;
+import { User } from '../models/user.model';
+
+export interface ApiResponse<T> {
+  data: T | null;
   message: string;
   status: number;
   success: boolean;
