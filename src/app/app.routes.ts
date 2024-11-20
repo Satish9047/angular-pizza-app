@@ -8,6 +8,7 @@ import { CustomOrderComponent } from './features/users/custom-order/custom-order
 import { YourOrdersComponent } from './features/users/your-orders/your-orders.component';
 import { InventoryComponent } from './features/admin/inventory/inventory.component';
 import { RequestedOrdersComponent } from './features/admin/requested-orders/requested-orders.component';
+import { authGuard } from './core/guard/auth.guard';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,7 @@ export const routes: Routes = [
   {
     path: 'user',
     component: HeaderComponent,
+    canActivate: [authGuard],
     children: [
       { path: 'dashboard', component: DashboardComponent, title: 'Dashboard' },
       { path: 'profile', component: ProfileComponent, title: 'Profile' },
@@ -46,6 +48,7 @@ export const routes: Routes = [
   {
     path: 'admin',
     component: HeaderComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: 'inventory',
