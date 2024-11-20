@@ -35,13 +35,14 @@ export class LoginComponent {
 
   onSubmit() {
     this.isLoading = true;
-    console.log;
     this.authService.login(this.loginForm.value).subscribe({
       next: (response) => {
-        if (response.success) {
+        this.isLoading = false;
+        if (response.success && response.data) {
+          localStorage.setItem('user', JSON.stringify(response.data));
+          this.authService.setUser(response.data);
           this.router.navigate(['user/dashboard']);
         }
-        this.isLoading = false;
       },
       error: (error) => {
         this.error = error.message;
