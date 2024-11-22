@@ -6,7 +6,14 @@
           <h3>Super Pizza</h3>
         </div>
         <div>
-          <p>Satish Prajapati</p>
+          <ng-container *ngIf="user$ | async as user">
+            <p>{{ user.email }}</p>
+          </ng-container>
+          <ng-container *ngIf="(user$ | async) === null">
+            <a [routerLink]="['/login']">Login</a>
+            /
+            <a [routerLink]="['/register']">Register</a>
+          </ng-container>
         </div>
       </nav>
     </header>
@@ -14,23 +21,25 @@
 
   <aside>
     <div class="flex flex-row">
-      <aside class="absolute px-4 w-44">
-        <nav class="flex flex-col gap-6">
-          <a [routerLink]="['/user/dashboard']" routerLinkActive="active"
-            >Dashboard</a
-          >
-          <a [routerLink]="['/user/your-orders']" routerLinkActive="active"
-            >Your Order</a
-          >
-          <a [routerLink]="['/user/custom-order']" routerLinkActive="active"
-            >Custom Order</a
-          >
-          <a [routerLink]="['/user/profile']" routerLinkActive="active"
-            >Profile</a
-          >
-          <a (click)="logout()">Sign Out</a>
-        </nav>
-      </aside>
+      @if (isAuth) {
+        <aside class="absolute px-4 w-44">
+          <nav class="flex flex-col gap-6">
+            <a [routerLink]="['/user/dashboard']" routerLinkActive="active"
+              >Dashboard</a
+            >
+            <a [routerLink]="['/user/your-orders']" routerLinkActive="active"
+              >Your Order</a
+            >
+            <a [routerLink]="['/user/custom-order']" routerLinkActive="active"
+              >Custom Order</a
+            >
+            <a [routerLink]="['/user/profile']" routerLinkActive="active"
+              >Profile</a
+            >
+            <a (click)="logout()">Sign Out</a>
+          </nav>
+        </aside>
+      }
       <aside></aside>
     </div>
   </aside>
