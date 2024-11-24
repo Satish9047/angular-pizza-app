@@ -15,14 +15,24 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Goat cheese, Bacon, Spicy Sauce, paner, Greek base</td>
-          <td>2</td>
-          <td>1000</td>
-          <td>Not Delivered</td>
-          <td>Not Paid</td>
-        </tr>
+        @for (order of yourOrders; track order._id; let i = $index) {
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>
+              {{ order.pizzaBase.name }}, {{ order.sauceType.name }},{{
+                order.cheeseType.name
+              }}, {{ order.veggies[0].name }}, {{ order.nonVeg[0].name }}
+            </td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.price }}</td>
+            <td>{{ order.isDelivered ? "Delivered" : "not Delivered" }}</td>
+            <td>{{ order.paid ? "paid" : "not Paid" }}</td>
+          </tr>
+        } @empty {
+          <tr class="flex justify-center w-full">
+            Your Orders is Empty
+          </tr>
+        }
       </tbody>
     </table>
   </div>
