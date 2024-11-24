@@ -22,7 +22,7 @@
   <aside>
     <div class="flex flex-row">
       @if (isAuth) {
-        <aside class="absolute px-4 w-44">
+        <aside class="absolute flex flex-col gap-6 px-4 w-44">
           <nav class="flex flex-col gap-6">
             <a [routerLink]="['/user/dashboard']" routerLinkActive="active"
               >Dashboard</a
@@ -36,6 +36,20 @@
             <a [routerLink]="['/user/profile']" routerLinkActive="active"
               >Profile</a
             >
+          </nav>
+          <ng-container *ngIf="user$ | async as user">
+            <nav class="flex flex-col gap-6" *ngIf="user.role === 'admin'">
+              <a [routerLink]="['/admin/inventory']" routerLinkActive="active"
+                >Inventory</a
+              >
+              <a
+                [routerLink]="['/admin/requested-orders']"
+                routerLinkActive="active"
+                >Requested Orders</a
+              >
+            </nav>
+          </ng-container>
+          <nav>
             <a (click)="logout()">Sign Out</a>
           </nav>
         </aside>
