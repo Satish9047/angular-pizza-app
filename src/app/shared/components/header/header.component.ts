@@ -1,8 +1,3 @@
-import { AuthService } from './../../../core/services/auth.service';
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
-import { NgIf } from '@angular/common';
 import {
   Router,
   RouterLink,
@@ -10,7 +5,13 @@ import {
   RouterOutlet,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { NgIf } from '@angular/common';
+import { OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+
 import { User } from '../../../core/models/user.model';
+import { AuthService } from './../../../core/services/auth.service';
 
 @Component({
   selector: 'app-header',
