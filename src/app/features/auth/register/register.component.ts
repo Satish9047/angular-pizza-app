@@ -1,14 +1,14 @@
-import { RegisterData } from './../../../core/interfaces/auth';
-import { Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-
-import { AuthService } from '../../../core/services/auth.service';
+import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
+
+import { RegisterData } from './../../../core/interfaces/auth';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-register',

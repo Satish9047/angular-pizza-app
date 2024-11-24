@@ -1,6 +1,6 @@
-import { AuthService } from './../../../core/services/auth.service';
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+
+import { AuthService } from './../../../core/services/auth.service';
 import {
   ReactiveFormsModule,
   FormGroup,

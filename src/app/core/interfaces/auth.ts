@@ -1,5 +1,3 @@
-import { User } from '../models/user.model';
-
 export interface ApiResponse<T> {
   data: T | null;
   message: string;
