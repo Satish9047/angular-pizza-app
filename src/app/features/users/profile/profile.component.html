@@ -3,53 +3,64 @@
     <div>
       <h3>Your Profile</h3>
     </div>
-    <div class="flex gap-8">
-      <figure>
-        <img
-          [ngSrc]="'/images/pizza.png'"
-          alt="Profile Picture"
-          width="200"
-          height="200"
-        />
-      </figure>
-      <div class="flex flex-col gap-4">
-        <div class="flex gap-2">
-          <img [ngSrc]="'/icons/profile.svg'" alt="" width="30" height="30" />
-          <input
-            type="text"
-            value="Satish Prajapati"
-            class="bg-transparent"
-            disabled
+    @defer {
+      <div class="flex gap-8">
+        <figure class="relative">
+          <img
+            [ngSrc]="'/images/pizza.png'"
+            alt="Profile Picture"
+            width="200"
+            height="200"
+            priority="true"
           />
-        </div>
-        <div class="flex gap-2">
-          <img [ngSrc]="'/icons/email.svg'" alt="" width="30" height="30" />
-          <input
-            type="text"
-            value="satishprajapati930gmail"
-            class="bg-transparent"
-            disabled
-          />
-        </div>
-        <div class="flex gap-2">
-          <img [ngSrc]="'/icons/phone.svg'" alt="" width="30" height="30" />
-          <input
-            type="text"
-            value="9860369300"
-            class="bg-transparent"
-            disabled
-          />
-        </div>
-        <div class="flex gap-2">
-          <img [ngSrc]="'/icons/address.svg'" alt="" width="30" height="30" />
-          <input
-            type="text"
-            value="Bhaktapur, Narcha-2"
-            class="bg-transparent"
-            disabled
-          />
+        </figure>
+        <div class="flex flex-col gap-4">
+          <div class="flex gap-2">
+            <img
+              [ngSrc]="'/icons/profile.svg'"
+              alt=""
+              width="30"
+              height="30"
+              class="object-contain"
+            />
+            <input
+              type="text"
+              [value]="userInfo.name"
+              class="bg-transparent"
+              disabled
+            />
+          </div>
+          <div class="flex gap-2">
+            <img [ngSrc]="'/icons/email.svg'" alt="" width="30" height="30" />
+            <input
+              type="text"
+              [value]="userInfo.email"
+              class="bg-transparent"
+              disabled
+            />
+          </div>
+          <div class="flex gap-2">
+            <img [ngSrc]="'/icons/phone.svg'" alt="" width="30" height="30" />
+            <input
+              type="text"
+              [value]="userInfo.phone"
+              class="bg-transparent"
+              disabled
+            />
+          </div>
+          <div class="flex gap-2">
+            <img [ngSrc]="'/icons/address.svg'" alt="" width="30" height="30" />
+            <input
+              type="text"
+              [value]="userInfo.address"
+              class="bg-transparent"
+              disabled
+            />
+          </div>
         </div>
       </div>
-    </div>
+    } @placeholder {
+      <p>Loading...</p>
+    }
   </div>
 </section>
