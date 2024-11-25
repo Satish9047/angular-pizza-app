@@ -6,6 +6,7 @@ import { routes } from './app.routes';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { loggerInterceptor } from './core/interceptors/logger.interceptor';
 import { refreshTokenInterceptor } from './core/interceptors/refresh-token.interceptor';
+import { cachingInterceptor } from './core/interceptors/caching.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,9 +14,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(
       withInterceptors([
-        loggerInterceptor,
+        cachingInterceptor,
         authInterceptor,
         refreshTokenInterceptor,
+        loggerInterceptor,
       ]),
     ),
   ],
